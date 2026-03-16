@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.FavoriteMapper">
+    <select id="getFavoriteListPage" resultType="com.video.model.entity.Favorite">
+        select * from favorite where uid = #{uid} and is_delete = 0
+    </select>
+    <select id="getVideoFavoritePage" resultType="com.video.web.main.vo.VideoFavoriteVo">
+        SELECT fv.time,
+               u.uid,
+               u.nickname,
+               v.title,
+               v.duration,
+               v.cover_url AS coverUrl,
+               v.upload_date AS uploadDate,
+               v.vid,
+               vs.play,
+               vs.danmu,
+               vs.good,
+               vs.coin,
+               vs.collect
+        FROM favorite_video fv
+                 LEFT JOIN video v ON fv.vid = v.vid
+                 LEFT JOIN video_stats vs ON v.vid = vs.vid
+                 LEFT JOIN user u ON v.uid = u.uid
+        WHERE fv.fid = #{fid} AND fv.is_remove = 0
+        <if test="sortField != null and sortField != ''">
+            order by ${sortField} desc
+        </if>
+    </select>
+    <select id="getFVByUidAndVid" resultType="java.lang.Long">
+        SELECT f.fid
+        FROM favorite_video fv
+        JOIN favorite f ON fv.fid = f.fid
+        WHERE fv.vid = #{vid}
+          AND f.uid = #{uid}
+          AND fv.is_remove = 0
+          AND f.is_delete = 0
+    </select>
+</mapper>

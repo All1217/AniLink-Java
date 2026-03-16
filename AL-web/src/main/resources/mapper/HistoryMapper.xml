@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.HistoryMapper">
+    <insert id="insertOne">
+        INSERT INTO bh_video (uid, vid, view_time, duration, is_finish, device, ip, is_delete)
+        VALUES (#{uid}, #{vid}, #{viewTime}, #{duration}, #{isFinish}, #{device}, #{ip}, #{isDelete})
+        ON DUPLICATE KEY UPDATE view_time = VALUES(view_time)
+    </insert>
+
+    <delete id="delete">
+        delete from bh_video where uid=#{uid} and vid = #{vid}
+    </delete>
+
+    <select id="getHistoryPage" resultType="com.video.web.main.vo.HistoryVo">
+        SELECT
+        v.vid,
+        v.title,
+        v.cover_url,
+        v.duration AS video_duration,
+        h.id, h.view_time, h.duration, h.is_finish, h.device, h.ip, h.is_delete,
+        u.nickname,
+        u.uid as author_uid
+        FROM bh_video h
+        JOIN video v ON h.vid = v.vid
+        JOIN user u ON v.uid = u.uid
+        WHERE h.uid = #{queryVo.uid} AND h.is_delete = 0
+        <if test="queryVo.startDuration != null">
+            AND v.duration &gt;= #{queryVo.startDuration}
+        </if>
+        <if test="queryVo.endDuration != null">
+            AND v.duration &lt;= #{queryVo.endDuration}
+        </if>
+        <if test="queryVo.keyword != null and queryVo.keyword != ''">
+            AND v.title LIKE CONCAT('%', #{queryVo.keyword}, '%')
+        </if>
+        <if test="queryVo.startTime != null">
+            AND h.view_time &gt;= #{queryVo.startTime}
+        </if>
+        <if test="queryVo.endTime != null">
+            AND h.view_time &lt;= #{queryVo.endTime}
+        </if>
+        ORDER BY h.view_time DESC
+    </select>
+</mapper>

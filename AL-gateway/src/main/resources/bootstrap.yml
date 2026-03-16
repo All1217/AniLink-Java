@@ -1,0 +1,27 @@
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.150.102:8848
+      config:
+        file-extension: yaml
+        shared-configs: # 共享配置
+          - data-id: shared-spring.yaml # 共享spring配置
+            refresh: false
+          - data-id: shared-mysql.yaml # 共享mysql配置
+            refresh: false
+    gateway:
+      routes:
+        - id: remark-service #路由标示,必须唯一
+          uri: lb://remarkservice # 路由的目标地址
+          predicates: # 路由断言,判断请求是否符合规则
+            - Path=/remark/** #路径断言,判断路径是否是以/user开头,如果是则符合
+        - id: web-service
+          uri: lb://webservice
+          predicates:
+            - Path=/main/**

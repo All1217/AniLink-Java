@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.CommentMapper">
+
+    <select id="pageRootItem" resultType="com.video.web.main.vo.CommentVo">
+        select c.id, c.vid, c.uid, c.root_id, c.parent_id,
+               c.to_user_id, c.content, c.love, c.bad,
+               c.create_time, c.is_top, c.is_deleted,
+               u.nickname, u.avatar, ifnull(cc.cnt, 0) reply_count
+        from
+        (select id, vid, uid, root_id, parent_id,
+                to_user_id, content, love, bad,
+                create_time, is_top, is_deleted
+         from comment where is_deleted = 0 and vid = #{queryVo.vid} and root_id = 0) c
+        left join
+        (select uid, nickname, avatar from user) u on c.uid = u.uid
+        left join
+        (select count(*) cnt, root_id
+        from comment where is_deleted = 0 and vid = #{queryVo.vid} and root_id != 0
+                     group by root_id) cc on c.id = cc.root_id
+        <if test="queryVo.sortField != null and queryVo.sortField != ''">
+            order by ${queryVo.sortField} desc
+        </if>
+    </select>
+
+    <select id="pageReplyItem" resultType="com.video.web.main.vo.CommentVo">
+        select c.id, c.vid, c.uid, c.root_id, c.parent_id,
+               c.to_user_id, c.content, c.love, c.bad,
+               c.create_time, c.is_top, c.is_deleted,
+               u.nickname, u.avatar
+        from
+            (select id, vid, uid, root_id, parent_id,
+                    to_user_id, content, love, bad,
+                    create_time, is_top, is_deleted
+            from comment where is_deleted = 0
+                           and vid = #{queryVo.vid}
+                           and root_id = #{queryVo.rootId}) c
+                left join
+            (select uid, nickname, avatar from user) u on c.uid = u.uid
+            order by love desc
+    </select>
+</mapper>

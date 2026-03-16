@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.ChatMapper">
+    <select id="getChatVoPage" resultType="com.video.web.main.vo.ChatVo">
+        SELECT c.id           AS id,
+               c.target_id    AS targetId,
+               c.sender_id    AS senderId,
+               c.latest_time  AS latestTime,
+               su.nickname    AS senderName,
+               tu.nickname    AS targetName,
+               su.avatar      AS senderAvatar,
+               tu.avatar      AS targetAvatar,
+               cm.content     AS 'chatMessage.content',
+               COALESCE(SUM(
+                                IF(cm_all.target_id = #{uid} AND cm_all.read_status = 0
+                                       AND (cm_all.sender_id = c.sender_id OR cm_all.sender_id = c.target_id), 1, 0)
+                        ), 0) AS unreadCount
+        FROM chat c
+                 LEFT JOIN user su ON su.uid = c.sender_id
+                 LEFT JOIN user tu ON tu.uid = c.target_id
+                 LEFT JOIN (SELECT cm1.*
+                            FROM chat_message cm1
+                                     INNER JOIN (SELECT LEAST(sender_id, target_id)    AS chat_user_min,
+                                                        GREATEST(sender_id, target_id) AS chat_user_max,
+                                                        MAX(time)                      AS max_time
+                                                 FROM chat_message
+                                                 GROUP BY LEAST(sender_id, target_id), GREATEST(sender_id, target_id)) cm2
+                                                ON LEAST(cm1.sender_id, cm1.target_id) = cm2.chat_user_min
+                                                    AND GREATEST(cm1.sender_id, cm1.target_id) = cm2.chat_user_max
+                                                    AND cm1.time = cm2.max_time) cm ON
+            (LEAST(c.sender_id, c.target_id) = LEAST(cm.sender_id, cm.target_id)
+                AND GREATEST(c.sender_id, c.target_id) = GREATEST(cm.sender_id, cm.target_id))
+                 LEFT JOIN chat_message cm_all
+                           ON (cm_all.target_id = #{uid} AND cm_all.read_status = 0
+                               AND (cm_all.sender_id = c.sender_id OR cm_all.sender_id = c.target_id))
+        WHERE c.sender_id = #{uid}
+           OR c.target_id = #{uid}
+        GROUP BY c.id, c.target_id, c.sender_id, c.latest_time, su.nickname, tu.nickname, su.avatar, tu.avatar,
+                 cm.content, cm.time
+    </select>
+    <select id="getChatVoByTwoIds" resultType="com.video.web.main.vo.ChatVo">
+        SELECT c.id                                                                         AS id,
+               c.target_id                                                                  AS targetId,
+               c.sender_id                                                                  AS senderId,
+               c.latest_time                                                                AS latestTime,
+               su.nickname                                                                  AS senderName,
+               tu.nickname                                                                  AS targetName,
+               su.avatar                                                                    AS senderAvatar,
+               tu.avatar                                                                    AS targetAvatar,
+               cm.content                                                                   AS 'chatMessage.content'
+        FROM chat c
+                 LEFT JOIN user su ON su.uid = c.sender_id
+                 LEFT JOIN user tu ON tu.uid = c.target_id
+                 LEFT JOIN (SELECT cm1.*
+                            FROM chat_message cm1
+                                     INNER JOIN (SELECT LEAST(sender_id, target_id)    AS chat_user_min,
+                                                        GREATEST(sender_id, target_id) AS chat_user_max,
+                                                        MAX(time)                      AS max_time
+                                                 FROM chat_message
+                                                 GROUP BY LEAST(sender_id, target_id), GREATEST(sender_id, target_id)) cm2
+                                                ON LEAST(cm1.sender_id, cm1.target_id) = cm2.chat_user_min
+                                                    AND GREATEST(cm1.sender_id, cm1.target_id) = cm2.chat_user_max
+                                                    AND cm1.time = cm2.max_time) cm ON
+            (LEAST(c.sender_id, c.target_id) = LEAST(cm.sender_id, cm.target_id)
+                AND GREATEST(c.sender_id, c.target_id) = GREATEST(cm.sender_id, cm.target_id))
+        WHERE (c.sender_id = #{senderId} and c.target_id = #{targetId})
+           OR (c.sender_id = #{targetId} and c.target_id = #{senderId})
+        GROUP BY c.id, c.target_id, c.sender_id, c.latest_time, su.nickname, tu.nickname, su.avatar, tu.avatar,
+                 cm.content, cm.time
+    </select>
+    <select id="getChatMessagePage" resultType="com.video.model.entity.ChatMessage">
+        select *
+        from chat_message
+        where ((sender_id = #{senderId} and target_id = #{targetId})
+            or (sender_id = #{targetId} and target_id = #{senderId}))
+          and withdraw = 0
+          and not (sender_del = 1 and target_del = 1)
+        order by time desc
+    </select>
+
+    <insert id="insertOneChatMessage">
+        insert into chat_message (sender_id, target_id, content, sender_del, target_del, withdraw, time, message_type,
+                                  read_status)
+        values (#{senderId}, #{targetId}, #{content}, #{senderDel}, #{targetDel}, #{withdraw}, #{time}, #{messageType},
+                #{readStatus})
+    </insert>
+</mapper>

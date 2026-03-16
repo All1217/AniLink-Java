@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.UserVideoMapper">
+    <update id="updateAction">
+        update user_video
+        <set>
+            <if test="play != null">play = #{play},</if>
+            <if test="coin != null">coin = #{coin},</if>
+            <if test="love != null">love = #{love},</if>
+            <if test="unlove != null">unlove = #{unlove},</if>
+            <if test="collect != null">collect = #{collect},</if>
+            <if test="coinTime != null">coin_time = #{coinTime},</if>
+            <if test="loveTime != null">love_time = #{loveTime},</if>
+            <if test="playTime != null">play_time = #{playTime},</if>
+            <if test="collectTime != null">collect_time = #{collectTime},</if>
+        </set>
+        where vid = #{vid} and uid = #{uid}
+    </update>
+
+    <select id="getStatsBySum" resultType="com.video.model.entity.VideoStats">
+        select vid, t.pc, t.coinc, t.cc, t.lc
+        from (select vid,
+                     play,
+                     coin,
+                     collect,
+                     love,
+                     SUM(love)    lc,
+                     SUM(play)    pc,
+                     SUM(coin)    coinc,
+                     SUM(collect) cc
+              from user_video
+              where vid = #{vid}
+              group by vid) t
+    </select>
+
+    <insert id="batchUpdateStats">
+        <foreach collection="list" item="item" separator=","
+                 open="INSERT INTO user_video (uid, vid, play, love, unlove, coin, collect, play_time, love_time, coin_time, collect_time)
+                   VALUES">
+            (#{item.uid}, #{item.vid},#{item.play},#{item.love}, #{item.unlove}, #{item.coin}, #{item.collect},
+            #{item.playTime},#{item.loveTime},#{item.coinTime}, #{item.collectTime})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        play = CASE WHEN VALUES(play) > 0 THEN play + VALUES(play) ELSE play END,
+        coin = CASE WHEN VALUES(coin) > 0 THEN VALUES(coin) ELSE coin END,
+        love = CASE WHEN VALUES(love) > 0 THEN VALUES(love) ELSE love END,
+        collect = CASE WHEN VALUES(collect) > 0 THEN VALUES(collect) ELSE collect END,
+        coin_time = CASE WHEN VALUES(coin_time) IS NOT NULL THEN VALUES(coin_time) ELSE coin_time END,
+        love_time = CASE WHEN VALUES(love_time) IS NOT NULL THEN VALUES(love_time) ELSE love_time END,
+        play_time = CASE WHEN VALUES(play_time) IS NOT NULL THEN VALUES(play_time) ELSE play_time END,
+        collect_time = CASE WHEN VALUES(collect_time) IS NOT NULL THEN VALUES(collect_time) ELSE collect_time END
+    </insert>
+
+</mapper>

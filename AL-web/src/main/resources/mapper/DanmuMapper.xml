@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.web.main.mapper.DanmuMapper">
+    <select id="filterUserByTags" resultType="com.video.model.entity.Danmu">
+        SELECT DISTINCT d.id, d.vid, d.uid, d.content, d.fontsize, d.mode, d.color, d.time_point, d.create_date
+        FROM danmu d
+                 INNER JOIN user_tag t ON d.uid = t.uid
+        WHERE t.tag_name = #{tagName}
+          AND t.weight > 0
+          AND d.status = 1
+          AND d.vid = #{vid}
+        ORDER BY d.time_point;
+    </select>
+</mapper>

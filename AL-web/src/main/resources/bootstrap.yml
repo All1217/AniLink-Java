@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: webservice
+  profiles:
+    active: dev # 决定本地加载哪个配置文件，当前仅包含application.yml、application-dev.yml
+  cloud:
+    nacos:
+      server-addr: 192.168.150.102:8848
+      config:
+        file-extension: yaml
+        shared-configs: # 共享配置
+          - data-id: shared-spring.yaml # 共享spring配置
+            refresh: false #
+          - data-id: shared-mysql.yaml # 共享mysql配置
+            refresh: false
