@@ -42,7 +42,7 @@ public class LoginController {
 
     @Operation(summary = "刷新token")
     @GetMapping(value = "/public/refresh")
-    public String refreshToken(@CookieValue(value = COOKIE_HEADER, required = false) String token) {
+    public Result<String> refreshToken(@CookieValue(value = COOKIE_HEADER, required = false) String token) {
         if (token == null) {
             throw new VideoException(TOKEN_EXPIRED);
         }
@@ -51,6 +51,7 @@ public class LoginController {
 //        if (host == null) {
 //            throw new VideoException(TOKEN_EXPIRED);
 //        }
-        return service.refreshToken(WebUtils.cookieBuilder().decode(token));
+        String newToken = service.refreshToken(WebUtils.cookieBuilder().decode(token));
+        return Result.ok(newToken);
     }
 }

@@ -12,4 +12,6 @@ public class Constant {
      * 优惠券兑换码模板
      */
     public static final String COUPON_CODE_PATTERN = "^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{8,10}$";
+    public static final String LIKES_BIZ_KEY_PREFIX = "likes:set:biz:";
+    public static final String LIKES_TIMES_KEY_PREFIX = "likes:times:type:";
 }

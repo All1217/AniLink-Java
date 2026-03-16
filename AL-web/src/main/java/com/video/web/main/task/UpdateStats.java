@@ -26,7 +26,7 @@ public class UpdateStats {
     @Autowired
     private UserVideoMapper userVideoMapper;
 
-    @Scheduled(cron = "0/30 * * * * ?")
+//    @Scheduled(cron = "0/30 * * * * ?")
     @Transactional
     public void calVideoStats() {
         log.info("开始计算交互数据……");
