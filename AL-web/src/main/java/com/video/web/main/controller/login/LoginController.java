@@ -54,4 +54,10 @@ public class LoginController {
         String newToken = service.refreshToken(WebUtils.cookieBuilder().decode(token));
         return Result.ok(newToken);
     }
+
+    @Operation(summary = "登出")
+    @PostMapping("/logout")
+    public void logout() {
+        service.logout();
+    }
 }

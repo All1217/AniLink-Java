@@ -21,9 +21,4 @@ public class LikeController {
     public void doLike(@Valid @RequestBody LikeDTO likeDTO) {
         likeService.doLike(likeDTO);
     }
-
-    @GetMapping("testGateway")
-    public Result<String> testGateway() {
-        return Result.ok("这是点赞微服务");
-    }
 }

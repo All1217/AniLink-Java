@@ -1,6 +1,7 @@
 package com.video.common.utils;
 
 import com.video.common.exception.VideoException;
+import com.video.common.login.LoginUserHolder;
 import com.video.common.result.ResultCodeEnum;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -18,14 +19,13 @@ public class JwtUtil {
     private static final SecretKey tokenSignKey = Keys.hmacShaKeyFor("M0PKKI6pYGVWWfDZw90a0lTpGYX1d4AQ".getBytes());
 
     public static String createToken(Long userId, String username) {
-        String token = Jwts.builder().
+        return Jwts.builder().
                 setSubject("USER_INFO").
                 setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION)).
                 claim(JWT_PAYLOAD_USER_ID, userId).
                 claim(JWT_PAYLOAD_USER_NAME, username).
                 signWith(tokenSignKey).
                 compact();
-        return token;
     }
 
     public static String createRefreshToken(Long userId, StringRedisTemplate template) {
@@ -57,6 +57,15 @@ public class JwtUtil {
         } catch (JwtException e) {
             throw new VideoException(ResultCodeEnum.TOKEN_INVALID);
         }
+    }
+
+    public static void clearJti(StringRedisTemplate template) {
+        log.error("common模块用户信息：{}", LoginUserHolder.getLoginUser());
+        if (LoginUserHolder.getLoginUser() == null || template == null) {
+            return;
+        }
+        template.delete(JWT_REDIS_KEY_PREFIX + LoginUserHolder.getLoginUser().getUserId());
+
     }
 
     public static void main(String[] args) {

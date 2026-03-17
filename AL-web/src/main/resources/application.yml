@@ -9,12 +9,6 @@ spring:
     multipart:
       max-file-size: 1024MB
       max-request-size: 1024MB
-  data:
-    redis:
-      host: ${CENTOS7_IP}
-      port: 6379
-      password: ${ANILINK_REDIS_PASS}
-      database: 5
   rabbitmq:
     host: ${CENTOS7_IP}
     port: 5672

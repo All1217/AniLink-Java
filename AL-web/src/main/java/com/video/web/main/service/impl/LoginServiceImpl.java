@@ -3,6 +3,8 @@ package com.video.web.main.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.video.common.exception.VideoException;
+import com.video.common.login.LoginUser;
+import com.video.common.login.LoginUserHolder;
 import com.video.common.result.ResultCodeEnum;
 import com.video.common.utils.JwtUtil;
 import com.video.common.utils.StringUtils;
@@ -13,6 +15,8 @@ import com.video.web.main.mapper.UserInfoMapper;
 import com.video.web.main.service.LoginService;
 import com.video.web.main.vo.LoginVo;
 import io.jsonwebtoken.Claims;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +36,12 @@ import static com.video.common.constant.JWTConstant.*;
 //import org.apache.commons.codec.digest.DigestUtils;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class LoginServiceImpl implements LoginService {
-    @Autowired
-    private UserInfoMapper userInfoMapper;
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
-    @Autowired
-    private StringRedisTemplate redisTemplate;
+    private final UserInfoMapper userInfoMapper;
+    private final RabbitTemplate rabbitTemplate;
+    private final StringRedisTemplate redisTemplate;
 
     @Override
     public String login(LoginVo loginVo) {
@@ -99,5 +102,18 @@ public class LoginServiceImpl implements LoginService {
         }
         // 2.生成新的access-token、refresh-token
         return geneTokens(userId, Long.toString(userId));
+    }
+
+    @Override
+    public void logout() {
+        LoginUser u = LoginUserHolder.getLoginUser();
+        log.error("web模块用户信息：{}", u);
+        WebUtils.cookieBuilder()
+                .name(COOKIE_HEADER)
+                .value("")
+                .maxAge(0)
+                .httpOnly(true)
+                .build();
+        JwtUtil.clearJti(redisTemplate);
     }
 }

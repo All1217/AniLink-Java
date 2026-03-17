@@ -4,7 +4,6 @@ public class JWTConstant {
     public static final String AUTHORIZATION_HEADER = "access-token";
     public static final String COOKIE_HEADER = "refresh-token";
     public static final String USER_ID = "user-id";
-    public static final String USER_NAME = "user-name";
     public static final String JWT_PAYLOAD_USER_ID = "userId";
     public static final String JWT_PAYLOAD_JTI = "jti";
     public static final String JWT_PAYLOAD_USER_NAME= "username";

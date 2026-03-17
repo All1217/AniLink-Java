@@ -1,5 +1,6 @@
 package com.video.remark.service.impl;
 
+import com.video.common.login.LoginUser;
 import com.video.common.login.LoginUserHolder;
 import com.video.remark.domain.LikeDTO;
 import com.video.remark.service.LikeService;
@@ -26,7 +27,7 @@ public class LikeServiceImpl implements LikeService {
         // 3.如果执行成功,统计点赞总数
         Long likedTimes = redisTemplate.opsForSet()
                 .size(LIKES_BIZ_KEY_PREFIX + likeDTO.getBizId());
-        if (likedTimes == null) {
+        if (likedTimes == null || likedTimes == 0) {
             return;
         }
         // 4.缓存点总数到Redis
@@ -38,7 +39,8 @@ public class LikeServiceImpl implements LikeService {
 
     private boolean like(LikeDTO likeDTO) {
         // 1.获取用户id
-        Long uid = LoginUserHolder.getLoginUser().getUserId();
+        LoginUser u = LoginUserHolder.getLoginUser();
+        Long uid = u.getUserId();
         // 2.获取Key
         String key = LIKES_BIZ_KEY_PREFIX + likeDTO.getBizId();
         //3.执行SADD命令

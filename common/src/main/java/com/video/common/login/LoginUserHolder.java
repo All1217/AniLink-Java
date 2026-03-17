@@ -1,7 +1,7 @@
 package com.video.common.login;
 
 public class LoginUserHolder {
-    public static ThreadLocal<LoginUser> threadLocal = new ThreadLocal<>();
+    public static final ThreadLocal<LoginUser> threadLocal = new ThreadLocal<>();
 
     public static void setLoginUser(LoginUser loginUser) {
         threadLocal.set(loginUser);

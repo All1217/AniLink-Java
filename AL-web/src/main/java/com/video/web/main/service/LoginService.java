@@ -12,4 +12,6 @@ public interface LoginService {
     UserInfo getLoginUserInfo(Long userId);
 
     String refreshToken(String refreshToken);
+
+    void logout();
 }

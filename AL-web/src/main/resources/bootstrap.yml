@@ -13,3 +13,9 @@ spring:
             refresh: false #
           - data-id: shared-mysql.yaml # 共享mysql配置
             refresh: false
+          - data-id: shared-redis.yaml
+            refresh: false
+al:
+  auth:
+    resource:
+      enable: true

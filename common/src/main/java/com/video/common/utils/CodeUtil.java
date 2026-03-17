@@ -114,13 +114,15 @@ public class CodeUtil {
      * @return 兑换码
      */
     public static long geneVisibleCode(long serialNum, long fresh) {
+        // 只使用低32位，保证在算法范围内
+        serialNum = serialNum & SERIAL_NUM_MASK;  // SERIAL_NUM_MASK = 0xFFFFFFFFL
+
         // 1.计算新鲜值
         fresh = fresh & FRESH_MASK;
         // 2.拼接payload，fresh（4位） + serialNum（32位）
         long payload = fresh << FRESH_BIT_OFFSET | serialNum;
         // 3.计算验证码
         long checkCode = calcCheckCode(payload, (int) fresh);
-        System.out.println("checkCode = " + checkCode);
         // 4.payload做大质数异或运算，混淆数据
         payload ^= XOR_TABLE[(int) (checkCode & FRESH_MASK)];
         // 5.拼接兑换码明文: 校验码（14位） + payload（36位）

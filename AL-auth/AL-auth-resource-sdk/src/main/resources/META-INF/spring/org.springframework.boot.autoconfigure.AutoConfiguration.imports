@@ -1,0 +1,3 @@
+# 文件：META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
+com.video.auth.resource.config.ResourceInterceptorConfiguration
+com.video.auth.resource.config.FeignRelayUserAutoConfiguration

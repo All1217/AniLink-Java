@@ -168,6 +168,30 @@ public class CompositeFilter implements GlobalFilter, Ordered {
 
 具体做法暂时看不懂。
 
+## [2026-03-17] SDK里的公共拦截器不生效
+
+为了实现跨模块通信，需要封装一个公共拦截器，拦截请求进行信息存取，但是拦截器不能放在网关层，所以只能把拦截器封装在公共通信微服务里，需要用到拦截器的业务微服务引入其依赖即可。
+
+### 1 自动配置从spring2.x到3.x的变迁
+
+[SpringBoot3.0自动配置新方案：从spring.factories到AutoConfiguration.imports的平滑迁移指南-CSDN博客](https://blog.csdn.net/weixin_28339967/article/details/158863108)
+
+一开始沿用天机学堂的自动配置写法，这个写法到spring3.x不是说不可以，而是不好。
+
+![](Assets/AniLink-cloud/spring2.x自动配置写法.png)
+
+spring3.x官方推荐写法：
+
+![](Assets/AniLink-cloud/spring3.x自动配置写法.png)
+
+### 2 要用@AutoConfiguration而非@Configuration
+
+如文章内所述，自动配置和@AutoConfiguration是捆绑的，和@Configuration不兼容，如果用了自动配置，@Configuration就得换成@AutoConfiguration
+
+![](Assets/AniLink-cloud/@AutoConfiguration与自动配置.png)
+
+因为这里卡了3个小时，Deepseek看了半天也没看出这个问题。
+
 # 实践文档
 
 ## [2026-03-11] 使用环境变量配置KEY
