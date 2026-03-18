@@ -5,6 +5,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @MapperScan("com.video.remark.mapper")
 @Slf4j
+@EnableScheduling
 public class RemarkApplication {
     public static void main(String[] args) {
         SpringApplication.run(RemarkApplication.class, args);

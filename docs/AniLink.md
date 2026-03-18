@@ -192,6 +192,42 @@ spring3.x官方推荐写法：
 
 因为这里卡了3个小时，Deepseek看了半天也没看出这个问题。
 
+## [2026-03-18] MqConfig配置类扫描不到RabbitMqHelper
+
+加了如下注解后，意味着需要让Spring Boot 的自动配置自动创建RabbitTemplate等Bean：
+
+```java
+@ConditionalOnClass(RabbitTemplate.class)
+@ConditionalOnClass(value = {MessageConverter.class, AmqpTemplate.class})
+```
+
+为了让MQ相关自动配置生效，除了上一条提到过的@AutoConfiguration自动配置，还需要在**业务微服务**引入依赖：
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+```
+
+以下依赖用于通用微服务的局部引入，不会自动配置：
+
+```xml
+<!--mq-->
+<dependency>
+    <groupId>org.springframework.amqp</groupId>
+    <artifactId>spring-amqp</artifactId>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>org.springframework.amqp</groupId>
+    <artifactId>spring-rabbit</artifactId>
+    <scope>provided</scope>
+</dependency>
+```
+
+
+
 # 实践文档
 
 ## [2026-03-11] 使用环境变量配置KEY

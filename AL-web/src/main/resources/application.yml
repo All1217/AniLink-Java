@@ -9,12 +9,6 @@ spring:
     multipart:
       max-file-size: 1024MB
       max-request-size: 1024MB
-  rabbitmq:
-    host: ${CENTOS7_IP}
-    port: 5672
-    virtual-host: AniLink
-    username: ${ANILINK_RABBITMQ_USER}
-    password: ${ANILINK_RABBITMQ_PASS}
 
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:

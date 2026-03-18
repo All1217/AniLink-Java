@@ -21,4 +21,10 @@ public class LikeController {
     public void doLike(@Valid @RequestBody LikeDTO likeDTO) {
         likeService.doLike(likeDTO);
     }
+
+    @GetMapping("/get/like")
+    @Operation(summary = "查询点赞状态")
+    public Result<Integer> getLikeState(@RequestParam("bizId") Long bizId) {
+        return likeService.getLikeState(bizId);
+    }
 }

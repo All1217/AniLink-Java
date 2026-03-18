@@ -26,15 +26,13 @@ public class UpdateStats {
     @Autowired
     private UserVideoMapper userVideoMapper;
 
-//    @Scheduled(cron = "0/30 * * * * ?")
+    @Scheduled(cron = "0/30 * * * * ?")
     @Transactional
     public void calVideoStats() {
-        log.info("开始计算交互数据……");
         Map<String, UserVideo> userVideoMap = new HashMap<>();
         Map<String, VideoStats> videoStatsMap = new HashMap<>();
         processVideoStats(Constant.MAIN_VIDEO_COIN_PREFIX, "coin", userVideoMap, videoStatsMap);
         processVideoStats(Constant.MAIN_VIDEO_FAVORITE_PREFIX, "collect", userVideoMap, videoStatsMap);
-        processVideoStats(Constant.MAIN_VIDEO_LIKE_PREFIX, "good", userVideoMap, videoStatsMap);
         processVideoStats(Constant.MAIN_VIDEO_PLAY_PREFIX, "play", userVideoMap, videoStatsMap);
         List<VideoStats> videoStatsList = new ArrayList<>(videoStatsMap.values());
         List<UserVideo> userVideoList = new ArrayList<>(userVideoMap.values());
@@ -42,7 +40,6 @@ public class UpdateStats {
         //一次性优化语句老出问题
 //        if(!videoStatsList.isEmpty()) videoStatsMapper.batchAddStats(videoStatsList);
         if (!userVideoList.isEmpty()) userVideoMapper.batchUpdateStats(userVideoList);
-
         //更新视频数据表
         videoStatsList.forEach(vs -> {
             videoStatsMapper.addVideoStats(vs);
@@ -78,10 +75,6 @@ public class UpdateStats {
                                 userVideoMap.get(mapKey).setCollect(value);
                                 userVideoMap.get(mapKey).setCollectTime(new Date());
                                 break;
-                            case "good":
-                                userVideoMap.get(mapKey).setLove(value);
-                                userVideoMap.get(mapKey).setLoveTime(new Date());
-                                break;
                             case "play":
                                 userVideoMap.get(mapKey).setPlay(value);
                                 userVideoMap.get(mapKey).setPlayTime(new Date());
@@ -102,9 +95,6 @@ public class UpdateStats {
                     case "collect":
                         videoStatsMap.get("" + videoId).setCollect(total);
                         break;
-                    case "good":
-                        videoStatsMap.get("" + videoId).setGood(total);
-                        break;
                     case "play":
                         videoStatsMap.get("" + videoId).setPlay(total);
                         break;
@@ -121,8 +111,8 @@ public class UpdateStats {
     public UserVideo getDefaultUserVideo() {
         UserVideo t = new UserVideo();
         t.setCoin(0);
-        t.setLove(0);
         t.setUnlove(0);
+        t.setLove(0);
         t.setPlay(0);
         t.setCollect(0);
         t.setPlayTime(new Date());

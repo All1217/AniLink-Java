@@ -14,4 +14,5 @@ public class Constant {
     public static final String COUPON_CODE_PATTERN = "^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{8,10}$";
     public static final String LIKES_BIZ_KEY_PREFIX = "likes:set:biz:";
     public static final String LIKES_TIMES_KEY_PREFIX = "likes:times:type:";
+    public static final String REQUEST_ID_HEADER = "requestId";
 }
