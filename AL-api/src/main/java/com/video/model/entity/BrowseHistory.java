@@ -36,11 +36,11 @@ public class BrowseHistory implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date viewTime;
 
-    @Schema(description = "观看时长")
+    @Schema(description = "观看到哪个时间点")
     @TableField(value = "duration")
     private Double duration;
 
-    @Schema(description = "是否完播")
+    @Schema(description = "是否完播，0未完播，1完播")
     @TableField(value = "is_finish")
     private Integer isFinish;
 

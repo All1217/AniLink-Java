@@ -15,4 +15,5 @@ public class Constant {
     public static final String LIKES_BIZ_KEY_PREFIX = "likes:set:biz:";
     public static final String LIKES_TIMES_KEY_PREFIX = "likes:times:type:";
     public static final String REQUEST_ID_HEADER = "requestId";
+    public final static String RECORD_KEY_TEMPLATE = "video:record:{}";
 }

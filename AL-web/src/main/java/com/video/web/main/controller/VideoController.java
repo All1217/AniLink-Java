@@ -3,9 +3,11 @@ package com.video.web.main.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.video.common.result.Result;
+import com.video.model.dto.web.VideoRecordFormDTO;
 import com.video.model.entity.UserVideo;
 import com.video.model.entity.Video;
 import com.video.model.entity.VideoStats;
+import com.video.web.main.service.HistoryService;
 import com.video.web.main.service.VideoService;
 import com.video.web.main.vo.RecQueryVo;
 import com.video.web.main.vo.UserVideoQueryVo;
@@ -30,6 +32,8 @@ public class VideoController {
     private RestTemplate restTemplate;
     @Autowired
     private VideoService videoService;
+    @Autowired
+    private HistoryService historyService;
 
     @Operation(summary = "条件分页查询视频")
     @GetMapping("pageVideo")
@@ -62,16 +66,6 @@ public class VideoController {
         return Result.ok(res);
     }
 
-    /**
-     * @description: 点赞相关
-     */
-    @Operation(summary = "点赞")
-    @PostMapping("/interact/like")
-    public Result<UserVideo> interActLike(@RequestBody UserVideoQueryVo userVideoQueryVo) {
-        UserVideo res = videoService.interActLike(userVideoQueryVo);
-        return Result.ok(res);
-    }
-
     @Operation(summary = "查询点赞状态")
     @GetMapping("/getInterActLike")
     public Result<UserVideo> getInterActLike(UserVideoQueryVo userVideoQueryVo) {
@@ -79,9 +73,6 @@ public class VideoController {
         return Result.ok(res);
     }
 
-    /**
-     * @description: 投币相关
-     */
     @Operation(summary = "查询投币状态")
     @GetMapping("/getInterActionCoin")
     public Result<UserVideo> getInterActionCoin(UserVideoQueryVo userVideoQueryVo) {
@@ -111,43 +102,8 @@ public class VideoController {
         return Result.ok(res);
     }
 
-    /**
-     * @description: 播放相关
-     */
-    @Operation(summary = "播放")
-    @PostMapping("/public/play")
-    public Result playVideo(@RequestBody UserVideoQueryVo userVideoQueryVo) {
-        videoService.playVideo(userVideoQueryVo);
-        return Result.ok();
-    }
-
-    /**
-     * @description: 已弃，现改为分离接口，且走redis缓存
-     */
-    @Operation(summary = "查询交互数据")
-    @GetMapping("/getInterActionStats")
-    public Result<UserVideo> getInterActionStats(UserVideoQueryVo userVideoQueryVo) {
-        UserVideo res = videoService.getInterActionStats(userVideoQueryVo);
-        return Result.ok(res);
-    }
-
-    /**
-     * @description: 已弃，现改为分离接口，且走redis缓存
-     */
-//    @Operation(summary = "交互（除了播放）")
-//    @PostMapping("/interact")
-//    public Result recommend(@RequestBody UserVideoQueryVo userVideoQueryVo) {
-//        videoService.recommend(userVideoQueryVo);
-//        return Result.ok();
-//    }
-
-    /**
-     * @description: 已弃，现改为分离接口，且走redis缓存
-     */
-    @Operation(summary = "播放")
-    @PostMapping("/public/interact")
-    public Result addPlay(@RequestBody UserVideoQueryVo userVideoQueryVo) {
-        videoService.recommend(userVideoQueryVo);
-        return Result.ok();
+    @PostMapping("/interact/record/add")
+    public void addVideoRecord(@RequestBody VideoRecordFormDTO formDTO) {
+        historyService.addVideoRecord(formDTO);
     }
 }

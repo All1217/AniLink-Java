@@ -1,6 +1,7 @@
 package com.video.web.main.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.video.model.dto.web.VideoRecordFormDTO;
 import com.video.model.entity.UserVideo;
 import com.video.model.entity.Video;
 import com.video.model.entity.VideoStats;
@@ -19,19 +20,11 @@ public interface VideoService {
 
     VideoStats getVideoStatsById(Long vid);
 
-    void recommend(UserVideoQueryVo userVideoQueryVo);
-
-    UserVideo getInterActionStats(UserVideoQueryVo userVideoQueryVo);
-
     List<VideoVo> getRealTimeRecommend(List<Long> videoIds);
-
-    UserVideo interActLike(UserVideoQueryVo userVideoQueryVo);
 
     UserVideo getInterActLike(UserVideoQueryVo userVideoQueryVo);
 
     UserVideo getInterActionCoin(UserVideoQueryVo userVideoQueryVo);
 
     UserVideo interActCoin(UserVideoQueryVo userVideoQueryVo);
-
-    void playVideo(UserVideoQueryVo userVideoQueryVo);
 }
