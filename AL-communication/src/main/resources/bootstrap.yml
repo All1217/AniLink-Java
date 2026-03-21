@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: communicationservice
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.150.102:8848
+      config:
+        file-extension: yaml
+        shared-configs:
+          - data-id: shared-spring.yaml
+            refresh: false
+          - data-id: shared-mysql.yaml
+            refresh: false

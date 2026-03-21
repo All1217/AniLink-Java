@@ -2,7 +2,7 @@ spring:
   main:
     web-application-type: reactive
   application:
-    name: gateway-service
+    name: gatewayservice
   profiles:
     active: dev
   cloud:

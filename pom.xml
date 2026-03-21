@@ -15,6 +15,7 @@
         <module>AL-remark</module>
         <module>AL-gateway</module>
         <module>AL-auth</module>
+        <module>AL-communication</module>
     </modules>
 
     <!-- 继承Spring Boot父项目 -->
