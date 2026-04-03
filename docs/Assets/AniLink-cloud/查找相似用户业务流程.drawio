@@ -1,0 +1,67 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="第 1 页" id="4uO2enNiZc74BiH2u1ng">
+    <mxGraphModel dx="1030" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jLAUrLfliJW8LtouW8DI-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-3" value="后端业务服务" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="130" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-4" value="转发" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="140" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-12" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-13" value="用户画像引擎" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-14" value="网页前端" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="10" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-16" value="查找与自己&lt;div&gt;相似的用户&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jLAUrLfliJW8LtouW8DI-17" target="eBGDrZEzc_mtIwStnCBK-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-17" value="执行算法流程" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jLAUrLfliJW8LtouW8DI-16" target="jLAUrLfliJW8LtouW8DI-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="120" as="sourcePoint" />
+            <mxPoint x="220" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jLAUrLfliJW8LtouW8DI-21" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jLAUrLfliJW8LtouW8DI-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="190" as="sourcePoint" />
+            <mxPoint x="260" y="50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eBGDrZEzc_mtIwStnCBK-1" target="eBGDrZEzc_mtIwStnCBK-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-1" value="用户信息列表" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-4" value="返回" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="35" y="95" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eBGDrZEzc_mtIwStnCBK-8" target="eBGDrZEzc_mtIwStnCBK-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eBGDrZEzc_mtIwStnCBK-8" value="转换数据格式&lt;div&gt;后转发&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="100" width="80" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

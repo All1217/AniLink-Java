@@ -67,7 +67,8 @@ public class DanmuContorller {
         return danmuService.filterUserByTags(queryVo);
     }
 
-    @Operation(summary = "根据指定标签过滤弹幕")
+    // 在这个接口中，uid和vid实际上均表示用户ID
+    @Operation(summary = "查找两个用户的公共标签")
     @GetMapping("/getCommonTags")
     public Result<List<String>> getCommonTags(RecQueryVo queryVo) {
         return userTagService.getCommonTags(queryVo);

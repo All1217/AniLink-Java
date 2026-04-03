@@ -103,6 +103,9 @@ public class VideoController {
     }
 
     @PostMapping("/interact/record/add")
+    // TODO: 当并发量非常大时，会出现最后一条历史记录重复录入的情况
+    // 比如说某个用户提交了N条播放记录，最终只有最后一条会被录入数据库
+    // 但是瞬时并发量超高时，比如1秒钟内该用户提交了2000条记录，那么最后一条记录会被重复录入，大约重复十来次
     public void addVideoRecord(@RequestBody VideoRecordFormDTO formDTO) {
         historyService.addVideoRecord(formDTO);
     }

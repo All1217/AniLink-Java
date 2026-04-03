@@ -1,0 +1,76 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="第 1 页" id="HV0UoE2eHQtPWfWNDdNm">
+    <mxGraphModel dx="1030" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhR61CbPCl9_EuhiJG-p-1" target="jhR61CbPCl9_EuhiJG-p-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhR61CbPCl9_EuhiJG-p-1" target="jhR61CbPCl9_EuhiJG-p-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-1" value="标签体系" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" width="76" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhR61CbPCl9_EuhiJG-p-3" target="jhR61CbPCl9_EuhiJG-p-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhR61CbPCl9_EuhiJG-p-3" target="jhR61CbPCl9_EuhiJG-p-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-3" value="静态信息" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="70" width="76" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhR61CbPCl9_EuhiJG-p-4" target="jhR61CbPCl9_EuhiJG-p-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-4" value="动态信息" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="70" width="76" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-6" value="行为属性" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;textDirection=vertical-lr;" vertex="1" parent="1">
+          <mxGeometry x="270" y="147.5" width="35" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="342" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-10" value="弹幕价值" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;textDirection=vertical-lr;" vertex="1" parent="1">
+          <mxGeometry x="342" y="147.5" width="35" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-11" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="438" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-12" value="兴趣偏好" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;textDirection=vertical-lr;" vertex="1" parent="1">
+          <mxGeometry x="438" y="147.5" width="35" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-13" value="时间属性" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-14" value="活跃频度" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="240" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-15" value="文本长度" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="332" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-16" value="内容深度" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="332" y="240" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-17" value="内容独特性" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="260" width="64" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-18" value="内容相关性" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="280" width="64" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-19" value="活跃频度" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="332" y="300" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jhR61CbPCl9_EuhiJG-p-20" value="话题偏好" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="426" y="220" width="64" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

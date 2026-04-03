@@ -52,6 +52,9 @@ public class LikeServiceImpl implements LikeService {
                 likedTimes);
     }
 
+    /**
+     * 定时任务主函数
+     */
     @Override
     public void readLikedTimesAndSendMessage(Byte bizType, int maxBizSize) {
         // 1.读取并移除Redis中缓存的点赞总数

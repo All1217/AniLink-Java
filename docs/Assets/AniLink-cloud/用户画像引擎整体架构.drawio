@@ -1,0 +1,97 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="第 1 页" id="HEPBR1ugNxaYmy-04iQC">
+    <mxGraphModel dx="1030" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rlwZ_R4I7sn5XMV67ymt-15" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;业务逻辑层&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="15" y="390" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rlwZ_R4I7sn5XMV67ymt-29" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;数据访问层&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="373.13" y="730" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rlwZ_R4I7sn5XMV67ymt-50" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;后端业务服务&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="368" y="140" width="122" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="230" width="530" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-18" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="147.75" y="250" width="474.5" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-19" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;应用层&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="355" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-20" value="Flask接口" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="280" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-21" value="RabbitMQ监听器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="280" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-22" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="147.75" y="370" width="472.25" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-23" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;业务逻辑层&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="342.5" y="370" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-24" value="画像构建器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="172" y="400" width="308" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-25" value="用户兴趣标签&lt;div&gt;算法模块&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="172" y="465" width="98" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-26" value="用户行为属性&lt;div&gt;算法模块&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="278.88" y="465" width="94.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-27" value="弹幕质量&lt;div&gt;算法模块&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="465" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-28" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="147.75" y="570" width="472.25" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-29" value="&lt;b&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;数据访问层&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="342.5" y="570" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-30" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OnpUantss9y_oJlSCYTk-24" target="OnpUantss9y_oJlSCYTk-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="610" as="sourcePoint" />
+            <mxPoint x="400" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OnpUantss9y_oJlSCYTk-24" target="OnpUantss9y_oJlSCYTk-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="440" as="sourcePoint" />
+            <mxPoint x="430" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OnpUantss9y_oJlSCYTk-24" target="OnpUantss9y_oJlSCYTk-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="600" as="sourcePoint" />
+            <mxPoint x="410" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-33" value="数据库连接池" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="172" y="610" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-34" value="Json&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;管理器&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="323.88" y="610" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-35" value="大模型接口" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="610" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-36" value="定时任务调度器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="400" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-37" value="其他工具模块" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="475" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-39" value="" style="shape=doubleArrow;direction=south;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="308" y="130" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OnpUantss9y_oJlSCYTk-40" value="" style="shape=doubleArrow;direction=south;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="308" y="680" width="60" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

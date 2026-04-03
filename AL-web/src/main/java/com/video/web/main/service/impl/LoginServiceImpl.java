@@ -94,13 +94,18 @@ public class LoginServiceImpl implements LoginService {
         if (userId == null) {
             throw new VideoException(ResultCodeEnum.TOKEN_INVALID);
         }
-        // 6.JTI校验
+        // 2.JTI校验
         Long payloadJti = claims.get(JWT_PAYLOAD_JTI, Long.class);
         String jti = redisTemplate.opsForValue().get(JWT_REDIS_KEY_PREFIX + userId);
         if (!StringUtils.equals(jti, payloadJti.toString())) {
             throw new VideoException(ResultCodeEnum.TOKEN_INVALID);
         }
-        // 2.生成新的access-token、refresh-token
+        // 3.发MQ通知构建用户画像
+        Map<String, Object> msg = new HashMap<>(2);
+        msg.put("uid", userId.toString());//python那边没法解析java的包装类Long
+        msg.put("timestamp", System.currentTimeMillis());
+        rabbitTemplate.convertAndSend("userProfile.exchange", "userProfile", msg);
+        // 4.生成新的access-token、refresh-token
         return geneTokens(userId, Long.toString(userId));
     }
 
