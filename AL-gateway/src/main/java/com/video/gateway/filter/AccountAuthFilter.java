@@ -23,11 +23,9 @@ public class AccountAuthFilter implements GlobalFilter, Ordered {
     private final Set<String> excludePath = new HashSet<>();
 
     {
-        excludePath.add("/doc.html");
         excludePath.add("/main/login/**");
         excludePath.add("/main/user/register");
-        excludePath.add("/main/video/home/**");
-        excludePath.add("/main/**/public/**");
+        excludePath.add("/**/public/**");
     }
 
     @Override

@@ -21,3 +21,7 @@ al:
   auth:
     resource:
       enable: true
+      exclude-login-paths:
+        - /main/user/register
+        - /main/login/**
+        - /**/public/**

@@ -38,19 +38,18 @@ public class CookieBuilder {
      */
     public void build() {
         if (response == null) {
-            log.error("response为null，无法写入cookie");
             return;
         }
         Cookie cookie = new Cookie(name, URLEncoder.encode(value, charset));
-        if (StringUtils.isNotBlank(domain)) {
-            cookie.setDomain(domain);
-        } else if (request != null) {
-            String serverName = request.getServerName();
-            if (!(isIpAddress(serverName) || "localhost".equals(serverName))) {
-                serverName = StringUtils.subAfter(serverName, ".", false);
-                cookie.setDomain("." + serverName);
-            }
-        }
+//        if (StringUtils.isNotBlank(domain)) {
+//            cookie.setDomain(domain);
+//        } else if (request != null) {
+//            String serverName = request.getServerName();
+//            if (!(isIpAddress(serverName) || "localhost".equals(serverName))) {
+//                serverName = StringUtils.subAfter(serverName, ".", false);
+//                cookie.setDomain("." + serverName);
+//            }
+//        }
         cookie.setHttpOnly(httpOnly);
         cookie.setMaxAge(maxAge);
         cookie.setPath(path);
@@ -58,7 +57,11 @@ public class CookieBuilder {
                 charset.name(), name, value, domain, maxAge, path, httpOnly);
         response.addCookie(cookie);
         // TODO: 非安全做法，仅仅是为了方便测试，找不到能正确设置refresh-token的方法
-        response.addHeader("refresh-token", value);
+//        response.addHeader("refresh-token", value);
+//        response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+//        response.setHeader("Access-Control-Allow-Credentials", "true");
+//        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     }
 
     /**

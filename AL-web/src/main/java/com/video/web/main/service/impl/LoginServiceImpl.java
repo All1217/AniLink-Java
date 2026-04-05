@@ -111,8 +111,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void logout() {
-        LoginUser u = LoginUserHolder.getLoginUser();
-        log.error("web模块用户信息：{}", u);
         WebUtils.cookieBuilder()
                 .name(COOKIE_HEADER)
                 .value("")

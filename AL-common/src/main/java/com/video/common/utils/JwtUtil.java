@@ -60,7 +60,6 @@ public class JwtUtil {
     }
 
     public static void clearJti(StringRedisTemplate template) {
-        log.error("common模块用户信息：{}", LoginUserHolder.getLoginUser());
         if (LoginUserHolder.getLoginUser() == null || template == null) {
             return;
         }

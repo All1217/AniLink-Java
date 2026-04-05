@@ -1,12 +1,17 @@
 package com.video.auth.resource.config;
 
+import cn.hutool.core.collection.CollUtil;
+import com.video.auth.resource.interceptors.LoginAuthInterceptor;
 import com.video.auth.resource.interceptors.UserInfoInterceptor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@Slf4j
 @AutoConfiguration
 @EnableConfigurationProperties(ResourceAuthProperties.class)
 public class ResourceInterceptorConfiguration implements WebMvcConfigurer {
@@ -28,22 +33,23 @@ public class ResourceInterceptorConfiguration implements WebMvcConfigurer {
             return;
         }
         // 2.添加登录拦截器
-//        InterceptorRegistration registration = registry.addInterceptor(new LoginAuthInterceptor()).order(1);
+        InterceptorRegistration registration = registry.addInterceptor(new LoginAuthInterceptor()).order(1);
         // 2.1.添加拦截器路径
-//        if(CollUtil.isNotEmpty(authProperties.getIncludeLoginPaths())){
-//            registration.addPathPatterns(authProperties.getIncludeLoginPaths());
-//        }
+        if (CollUtil.isNotEmpty(authProperties.getIncludeLoginPaths())) {
+            registration.addPathPatterns(authProperties.getIncludeLoginPaths());
+        }
         // 2.2.添加排除路径
-//        if(CollUtil.isNotEmpty(authProperties.getExcludeLoginPaths())){
-//            registration.excludePathPatterns(authProperties.getExcludeLoginPaths());
-//        }
+        if (CollUtil.isNotEmpty(authProperties.getExcludeLoginPaths())) {
+            registration.excludePathPatterns(authProperties.getExcludeLoginPaths());
+        }
         // 2.3.排除swagger路径
-//        registration.excludePathPatterns(
-//                "/v2/**",
-//                "/v3/**",
-//                "/swagger-resources/**",
-//                "/webjars/**",
-//                "/doc.html"
-//        );
+        registration.excludePathPatterns(
+                "/v2/**",
+                "/v3/**",
+                "/swagger-resources/**",
+                "/webjars/**",
+                "/doc.html",
+                "/**/public/**"
+        );
     }
 }

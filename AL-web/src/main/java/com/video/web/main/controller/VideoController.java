@@ -44,7 +44,7 @@ public class VideoController {
     }
 
     @Operation(summary = "分页查询视频(免登录)")
-    @GetMapping("/home/pageVideo")
+    @GetMapping("/public/pageVideo")
     public Result<IPage<VideoVo>> homePageItem(@RequestParam long current, @RequestParam long size, VideoQueryVo queryVo) {
         log.info("queryVo: {}", queryVo);
         IPage<VideoVo> page = new Page<>(current, size);
@@ -53,14 +53,14 @@ public class VideoController {
     }
 
     @Operation(summary = "根据ID查询视频信息（免登录）")
-    @GetMapping("/home/getVideoById")
+    @GetMapping("/public/getVideoById")
     public Result<Video> homeGetVideoById(@RequestParam Long vid) {
         Video res = videoService.getById(vid);
         return Result.ok(res);
     }
 
     @Operation(summary = "根据ID查询视频数据（免登录）")
-    @GetMapping("/home/getVideoStatsById")
+    @GetMapping("/public/getVideoStatsById")
     public Result<VideoStats> homeGetVideoStatsById(@RequestParam Long vid) {
         VideoStats res = videoService.getVideoStatsById(vid);
         return Result.ok(res);
@@ -88,7 +88,7 @@ public class VideoController {
     }
 
     @Operation(summary = "获取实时推荐列表")
-    @GetMapping("/getRealTimeRecommend")
+    @GetMapping("/public/getRealTimeRecommend")
     public Result<List<VideoVo>> getRealTimeRecommend(RecQueryVo queryVo) {
         // 向 Flask 服务发送 GET 请求，返回的视频 ID 列表
         String url = "http://localhost:5000/recommendations/" + queryVo.getUid() + "?count=" + queryVo.getCount();
