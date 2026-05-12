@@ -45,7 +45,8 @@ public class DanmuServiceImpl extends ServiceImpl<DanmuMapper, Danmu> implements
         if (!StringUtils.hasText(tagName)) {
             return Result.fail(PARAM_ERROR.getCode(), "无效的标签代码");
         }
-        List<Danmu> res = danmuMapper.filterUserByTags(queryVo.getVid(), tagName);
+        List<Danmu> res = danmuMapper.
+                filterUserByTags(queryVo.getVid(), tagName.equals("通用") ? queryVo.getTagName() : tagName);
         return Result.ok(res);
     }
 

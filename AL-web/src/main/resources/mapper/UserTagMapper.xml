@@ -10,4 +10,16 @@
                  inner join (select tag_name from user_tag where uid = #{vid}) ut2
                             on ut1.tag_name = ut2.tag_name;
     </select>
+    <select id="getTagRankList" resultType="com.video.web.main.vo.TagRankListVO"
+            parameterType="java.lang.Long">
+        SELECT t.tag_name AS name,
+               COUNT(*) AS value
+        FROM user_tag t
+                 INNER JOIN danmu d ON t.uid = d.uid
+        WHERE d.vid = #{vid}
+          AND d.status = 1
+        GROUP BY t.tag_name
+        ORDER BY value DESC
+        LIMIT 8;
+    </select>
 </mapper>

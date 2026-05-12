@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum TagType {
     HIGH_QUALITY_PROVIDER(0, "高质量弹幕贡献者"),
-    KNOWLEDGE_PROVIDER(1, "干货贡献者");
+    KNOWLEDGE_PROVIDER(1, "干货贡献者"),
+    COMMON_TAGS(4, "通用");
     private final Integer code;
     private final String tagName;
 

@@ -8,6 +8,7 @@ import com.video.web.main.service.DanmuService;
 import com.video.web.main.service.UserInfoService;
 import com.video.web.main.service.UserTagService;
 import com.video.web.main.vo.RecQueryVo;
+import com.video.web.main.vo.TagRankListVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +73,11 @@ public class DanmuContorller {
     @GetMapping("/getCommonTags")
     public Result<List<String>> getCommonTags(RecQueryVo queryVo) {
         return userTagService.getCommonTags(queryVo);
+    }
+
+    @Operation(summary = "获取出现频率前八的标签")
+    @GetMapping("/getTagRankList")
+    public Result<List<TagRankListVO>> getTagRankList(@RequestParam Long vid) {
+        return userTagService.getTagRankList(vid);
     }
 }

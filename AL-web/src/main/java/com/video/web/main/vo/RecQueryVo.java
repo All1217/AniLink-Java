@@ -19,4 +19,7 @@ public class RecQueryVo {
 
     @Schema(description="指定的用户标签")
     private Integer tag;
+
+    @Schema(description="指定的用户标签（字符串）")
+    private String tagName;
 }
