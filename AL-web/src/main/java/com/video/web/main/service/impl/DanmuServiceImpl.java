@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static com.video.common.result.ResultCodeEnum.PARAM_ERROR;
 
@@ -47,6 +48,21 @@ public class DanmuServiceImpl extends ServiceImpl<DanmuMapper, Danmu> implements
         }
         List<Danmu> res = danmuMapper.
                 filterUserByTags(queryVo.getVid(), tagName.equals("通用") ? queryVo.getTagName() : tagName);
+
+        // 临时测试代码
+        CompletableFuture.runAsync(() -> {
+            log.info("开始异步同步子弹幕，数量: {}", res.size());
+            try {
+                danmuMapper.deleteOriginSubDanmu();
+                for (Danmu danmu : res) {
+                    danmuMapper.insertSubDanmu(danmu);
+                }
+                log.info("异步同步子弹幕完成");
+            } catch (Exception e) {
+                log.error("异步同步子弹幕失败", e);
+            }
+        });
+
         return Result.ok(res);
     }
 

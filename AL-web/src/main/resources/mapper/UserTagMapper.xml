@@ -18,6 +18,8 @@
                  INNER JOIN danmu d ON t.uid = d.uid
         WHERE d.vid = #{vid}
           AND d.status = 1
+        AND t.tag_name != '低质量弹幕倾向'
+        AND t.tag_name != '短平快弹幕'
         GROUP BY t.tag_name
         ORDER BY value DESC
         LIMIT 8;
